@@ -12,7 +12,7 @@ import br.com.cinq.spring.data.resource.SampleResource;
  * @author Adriano Kretschmer
  */
 @Configuration
-@ApplicationPath("rest")
+@ApplicationPath("/rest")
 public class Config extends ResourceConfig {
 
     public Config() {

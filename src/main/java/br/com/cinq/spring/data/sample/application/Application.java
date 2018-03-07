@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * Greeting Service.
  */
 @SpringBootApplication
-@ComponentScan(basePackages = { "br.com.cinq.spring.data.sample" })
+@ComponentScan(basePackages = { "br.com.cinq.spring.data" })
 @EntityScan(basePackages = { "br.com.cinq.spring.data.sample.entity" })
 @EnableJpaRepositories("br.com.cinq.spring.data.sample.repository")
 @EnableAutoConfiguration
