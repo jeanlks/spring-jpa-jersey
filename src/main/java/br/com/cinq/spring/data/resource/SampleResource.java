@@ -4,6 +4,7 @@ import br.com.cinq.spring.data.sample.entity.City;
 import br.com.cinq.spring.data.sample.repository.CityRepository;
 import br.com.cinq.spring.data.sample.service.CityService;
 import br.com.cinq.spring.data.sample.service.CityServiceImpl;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;

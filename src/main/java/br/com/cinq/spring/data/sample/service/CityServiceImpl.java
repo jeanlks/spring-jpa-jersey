@@ -32,10 +32,9 @@ public class CityServiceImpl  implements CityService {
         } else {
             List<City> cities= new ArrayList<>();
             List<Country> countries = countryRepository.findCountriesByNameIgnoreCaseContaining(countryName);
-            countries.forEach(c -> {
-                cities.addAll(cityRepository.findAllByCountry(c));
-            });
+            countries.forEach(c -> cities.addAll(cityRepository.findAllByCountry(c)));
             return cities;
         }
     }
+
 }
