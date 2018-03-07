@@ -9,18 +9,13 @@ import javax.persistence.*;
 @Entity
 public class City {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id")
     private Country country;
-
-    public City(String name, Country country) {
-        this.name = name;
-        this.country = country;
-    }
 
     public int getId() {
         return id;

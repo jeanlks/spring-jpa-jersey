@@ -12,13 +12,9 @@ import javax.persistence.Id;
 @Entity
 public class Country {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-
-    public Country(String name) {
-        this.name = name;
-    }
 
     public int getId() {
         return id;
