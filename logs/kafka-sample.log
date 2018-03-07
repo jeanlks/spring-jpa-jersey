@@ -1,0 +1,5 @@
+2018-03-07 10:32:38,042 [main] INFO  b.c.c.s.d.s.application.Application - Starting Application on DESKTOP-JDC7V73 with PID 12512 (C:\Users\Jean\Documents\spring-jpa-jersey\target\classes started by Jean in C:\Users\Jean\Documents\spring-jpa-jersey)
+2018-03-07 10:32:38,052 [main] INFO  b.c.c.s.d.s.application.Application - No active profile set, falling back to default profiles: default
+2018-03-07 10:32:46,560 [localhost-startStop-1] WARN  o.g.j.internal.inject.Providers - A provider br.com.cinq.spring.data.resource.SampleResource registered in SERVER runtime does not implement any provider interfaces applicable in the SERVER runtime. Due to constraint configuration problems the provider br.com.cinq.spring.data.resource.SampleResource will be ignored. 
+2018-03-07 10:32:48,524 [main] WARN  o.a.tomcat.jdbc.pool.ConnectionPool - maxIdle is larger than maxActive, setting maxIdle to: 50
+2018-03-07 10:32:51,784 [main] INFO  b.c.c.s.d.s.application.Application - Started Application in 14.671 seconds (JVM running for 31.522)

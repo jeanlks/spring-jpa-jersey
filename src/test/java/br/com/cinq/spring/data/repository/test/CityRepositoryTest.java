@@ -13,9 +13,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import br.com.cinq.spring.data.sample.application.Application;
-//import br.com.cinq.spring.data.sample.entity.City;
-//import br.com.cinq.spring.data.sample.entity.Country;
-//import br.com.cinq.spring.data.sample.repository.CityRepository;
+import br.com.cinq.spring.data.sample.entity.City;
+import br.com.cinq.spring.data.sample.entity.Country;
+import br.com.cinq.spring.data.sample.repository.CityRepository;
 
 /**
  * Eye candy: implements a sample in using JpaRespositories

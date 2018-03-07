@@ -13,8 +13,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import br.com.cinq.spring.data.sample.application.Application;
-//import br.com.cinq.spring.data.sample.entity.Country;
-//import br.com.cinq.spring.data.sample.repository.CountryRepository;
+import br.com.cinq.spring.data.sample.entity.Country;
+import br.com.cinq.spring.data.sample.repository.CountryRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
