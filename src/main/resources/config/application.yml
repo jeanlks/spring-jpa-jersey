@@ -1,5 +1,8 @@
 server:
     port: 8090
+local:
+  server:
+    port: 9000
 
 spring:
     jersey:
