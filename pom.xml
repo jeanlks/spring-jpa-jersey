@@ -4,7 +4,7 @@
 	<groupId>br.com.cinq.sample</groupId>
 	<artifactId>spring-jpa-jersey</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>Spring JPA Jersey</name>
 
 	<parent>
@@ -12,6 +12,11 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.0.RELEASE</version>
 	</parent>
+
+	<properties>
+		<docker.image.prefix>jeantest</docker.image.prefix>
+		<docker.image.name>cities</docker.image.name>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -46,7 +51,6 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -63,7 +67,75 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-            <plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!--DOCKER Fabric8 -->
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.20.0</version>
+
+				<configuration>
+
+					<!--<dockerHost>http://127.0.0.1:2375</dockerHost>-->
+					<dockerHost>unix:///var/run/docker.sock</dockerHost>
+
+					<verbose>true</verbose>
+					<images>
+						<image>
+							<name>${docker.image.prefix}/${docker.image.name}</name>
+							<build>
+								<dockerFileDir>${project.basedir}/target/dockerfile/</dockerFileDir>
+
+								<!--copies artficact to docker build dir in target-->
+								<assembly>
+									<descriptorRef>artifact</descriptorRef>
+								</assembly>
+								<tags>
+									<tag>latest</tag>
+									<tag>${project.version}</tag>
+								</tags>
+							</build>
+							<run>
+								<ports>
+									<port>8090:8090</port>
+								</ports>
+							</run>
+						</image>
+					</images>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.gmavenplus</groupId>
+				<artifactId>gmavenplus-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<scripts>
+						<script>file:///${project.basedir}/src/main/scripts/BuildDockerfile.groovy</script>
+					</scripts>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.groovy</groupId>
+						<artifactId>groovy-all</artifactId>
+						<version>2.4.8</version>
+						<scope>runtime</scope>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -76,12 +148,19 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.19.1</version>
 				<configuration>
-					<skip>${surefire.skip}</skip>
+					<skip>true</skip>
 				</configuration>
+
 				<executions>
 					<execution>
+						<id>integration-test</id>
 						<goals>
 							<goal>integration-test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<goals>
 							<goal>verify</goal>
 						</goals>
 					</execution>

@@ -82,3 +82,36 @@ Post the percentage of line covered by tests of your application.
 
 
 ** PLUS: It would be great if you can come up with unit and integration tests separately in their apropriate building phases.
+
+
+## Challenge answers
+
+It was added different building phases to this project, if you want to use that, use the following commands
+
+Basic tests:
+    
+    mvn test
+Integration tests: 
+    
+    mvn integration-test
+All tests
+
+    mvn verify
+    
+##Docker
+
+Generate docker build
+    
+    mvn clean package docker:build
+
+Run docker container
+    
+    docker run --name=cities -p8090:8090 -d jeantest/cities
+    
+Get docker container logs 
+
+    docker logs -f cities
+    
+List docker containers running
+
+    docker ps
