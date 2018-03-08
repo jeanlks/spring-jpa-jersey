@@ -86,6 +86,12 @@ Post the percentage of line covered by tests of your application.
 
 ## Challenge answers
 
+Code Coverage // Services - 100%
+    
+    mvn clean verify jacoco:report
+    
+Then, open the target/site/jacoco/index.html
+
 It was added different building phases to this project, if you want to use that, use the following commands
 
 Basic tests:

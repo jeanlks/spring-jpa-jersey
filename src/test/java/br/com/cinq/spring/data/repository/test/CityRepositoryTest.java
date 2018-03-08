@@ -39,4 +39,19 @@ public class CityRepositoryTest {
 
         Assert.assertEquals(2, list.size());
     }
+
+    @Test
+    public void testQueryUnitedStates() {
+
+        Assert.assertNotNull(dao);
+
+        Assert.assertTrue(dao.count()>0);
+
+        Country country = new Country();
+        country.setId(2); // Should be France
+
+        List<City> list = dao.findAllByCountry(country);
+
+        Assert.assertEquals(3, list.size());
+    }
 }

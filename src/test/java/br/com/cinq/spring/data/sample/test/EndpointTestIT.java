@@ -52,4 +52,27 @@ public class EndpointTestIT {
         Assert.assertEquals(2, cities.length);
 
     }
+
+    @Test
+    public void testGetAllCities() throws InterruptedException {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
+
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(this.localhost + this.port + "/rest/cities");
+
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<City[]> response = this.restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.GET,
+                entity, City[].class);
+
+        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        Thread.sleep(2000L);
+
+        City[] cities = response.getBody();
+
+        Assert.assertEquals(9, cities.length);
+
+    }
 }
