@@ -30,7 +30,7 @@ public class CountryRepositoryTest {
 
         Assert.assertTrue(count > 0);
 
-        List<Country> countries = dao.findAll();
+        List<Country> countries = (List<Country>) dao.findAll();
 
         Assert.assertEquals((int) count, countries.size());
     }

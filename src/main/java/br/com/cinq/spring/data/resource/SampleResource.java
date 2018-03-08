@@ -1,10 +1,7 @@
 package br.com.cinq.spring.data.resource;
 
 import br.com.cinq.spring.data.sample.entity.City;
-import br.com.cinq.spring.data.sample.repository.CityRepository;
 import br.com.cinq.spring.data.sample.service.CityService;
-import br.com.cinq.spring.data.sample.service.CityServiceImpl;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -37,5 +34,12 @@ public class SampleResource {
     public Response getCities(@QueryParam("country") String country) {
         List<City> cities = service.getCities(country);
         return Response.ok(cities).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({"application/json"})
+    public Response uploadData( List<City> cities) {
+        return Response.ok(service.addCities(cities)).build();
     }
 }

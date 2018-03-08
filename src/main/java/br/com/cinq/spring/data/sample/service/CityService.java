@@ -16,4 +16,10 @@ public interface CityService {
      * @return list of cities
      */
     List<City> getCities(String country);
+
+    /**
+     * Service responsible for uploading a list of cities to the database.
+     * @return list of cities added.
+     */
+    List<City> addCities(List<City> cities);
 }

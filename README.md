@@ -86,6 +86,22 @@ Post the percentage of line covered by tests of your application.
 
 ## Challenge answers
 
+To upload data into the cities array you can use the POST method
+Here is an example using curl:
+        
+        curl -X POST \
+          http://localhost:8090/rest/cities \
+          -H 'Cache-Control: no-cache' \
+          -H 'Content-Type: application/json' \
+          -d '[
+            {
+                "name": "Goiania",
+                "country": {
+                    "name": "Brazil"
+                }
+            }
+        ]'
+        
 Code Coverage // Services - 100%
     
     mvn clean verify jacoco:report

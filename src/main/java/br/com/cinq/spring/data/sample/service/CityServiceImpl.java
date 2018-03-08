@@ -6,6 +6,7 @@ import br.com.cinq.spring.data.sample.repository.CityRepository;
 import br.com.cinq.spring.data.sample.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class CityServiceImpl  implements CityService {
     @Override
     public List<City> getCities(String countryName) {
         if (countryName == null) {
-            return cityRepository.findAll();
+            return (List<City>) cityRepository.findAll();
         } else {
             List<City> cities= new ArrayList<>();
             List<Country> countries = countryRepository.findCountriesByNameIgnoreCaseContaining(countryName);
@@ -37,4 +38,20 @@ public class CityServiceImpl  implements CityService {
         }
     }
 
+    @Override
+    @Transactional
+    public List<City> addCities(List<City> cities) {
+        List<City> savedCities = new  ArrayList<>();
+        for(City city: cities) {
+            Country country = countryRepository
+                                        .findFirstByNameIgnoreCaseContaining(city.getCountry().getName());
+            if(country==null) {
+                savedCities.add(cityRepository.save(city));
+            }else {
+                    city.setCountry(country);
+                    savedCities.add(cityRepository.save(city));
+            }
+        }
+        return savedCities;
+    }
 }
