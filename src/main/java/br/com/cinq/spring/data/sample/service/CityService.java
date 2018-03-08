@@ -9,5 +9,11 @@ import java.util.List;
  * @author Jean
  */
 public interface CityService {
+    /**
+     * Service responsible for retrieving the cities either
+     * querying by country or not.
+     * @param country country name.
+     * @return list of cities
+     */
     List<City> getCities(String country);
 }

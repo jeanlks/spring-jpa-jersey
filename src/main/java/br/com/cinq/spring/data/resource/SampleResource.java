@@ -12,6 +12,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+/**
+ * Endpoint Sample Resource
+ * @author Jean 
+ */
 @Path("/cities")
 public class SampleResource {
 
@@ -22,6 +26,11 @@ public class SampleResource {
         this.service = cityService;
     }
 
+    /**
+     * Endpoint responsible for retrieving cities.
+     * @param country country name
+     * @return lista of cities.
+     */
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({"application/json"})
