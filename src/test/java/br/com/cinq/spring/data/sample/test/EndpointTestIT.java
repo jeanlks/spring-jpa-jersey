@@ -18,8 +18,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = Application.class)
 @ActiveProfiles("unit")
-public class EndpointTest {
-    Logger logger = LoggerFactory.getLogger(EndpointTest.class);
+public class EndpointTestIT {
+    Logger logger = LoggerFactory.getLogger(EndpointTestIT.class);
 
     private final String localhost = "http://localhost:";
 
